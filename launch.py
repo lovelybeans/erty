@@ -17,5 +17,5 @@ except KeyboardInterrupt:
 
     print('Stopping...')
     api.terminate()
-    bot.terminate()
+    #bot.terminate()
     print('Stopped all processes.')
