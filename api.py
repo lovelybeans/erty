@@ -95,6 +95,23 @@ async def root(
 
     return {'status_code': 200, 'reason': 'Saved info successfully!'}
 
+@app.post('/api/v1/roblox/groups/rank-user/{group_id}/{user_id}')
+async def apipost(
+        group_id: str,
+        user_id: str,
+        cloud_key: str | None = Header(default=None, convert_underscores=False),
+        package: str | None = Header(default=None)
+):
+    if not group_id or group_id == "null" or not user_id or user_id == "null" or not cloud_key or not package:
+        return {'status_code': 400, 'reason': f'Bad Request: Missing Arguments'}
+
+    response = requests.patch(
+        f'https://apis.roblox.com/cloud/v2/groups/{group_id}/memberships/{user_id}?updateMask=role',
+        headers = {'x-api-key': cloud_key, 'Content-Type': 'application/json'},
+        data = package
+    )
+
+    return response.json()
 
 if __name__ == "__main__":
     uvicorn.run(host="0.0.0.0", port=9063, app=app)
