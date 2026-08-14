@@ -18,6 +18,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get('/')
+def getbase():
+    return None
+
 @app.get("/api/v1/discord/data/inject/{code}")
 async def root(
         code: str,
