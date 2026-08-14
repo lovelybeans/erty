@@ -7,7 +7,7 @@ print('Starting launcher.py')
 print('a')
 api = subprocess.Popen([sys.executable, "api.py"])
 print('b')
-bot = subprocess.Popen([sys.executable, "bot.py"])
+#bot = subprocess.Popen([sys.executable, "bot.py"])
 print('c')
 
 try:
