@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import json
 import requests
 import os
+import base64
 
 client_id = '1525114197917040731'
 client_sec = 'f1F3OEMctAnUuD5UJMDp_5UhjBNvIsYp'
@@ -103,15 +104,24 @@ async def root(
 async def apipost(
         group_id: str,
         user_id: str,
-        cloud_key: str | None = Header(default=None, convert_underscores=False),
+        cloudkey: str | None = Header(default=None, convert_underscores=False),
         package: str | None = Header(default=None)
 ):
-    if not group_id or group_id == "null" or not user_id or user_id == "null" or not cloud_key or not package:
+    if not group_id or group_id == "null" or not user_id or user_id == "null" or not cloudkey or not package:
         return {'status_code': 400, 'reason': f'Bad Request: Missing Arguments'}
+
+    print(cloudkey)
+    print(base64.b64decode(package))
+
+    package = base64.b64decode(package).decode().replace('\x00', '')
+
+    print(package)
+
+    #return {cloudkey, package}
 
     response = requests.patch(
         f'https://apis.roblox.com/cloud/v2/groups/{group_id}/memberships/{user_id}?updateMask=role',
-        headers = {'x-api-key': cloud_key, 'Content-Type': 'application/json'},
+        headers = {'x-api-key': cloudkey, 'Content-Type': 'application/json'},
         data = package
     )
 
