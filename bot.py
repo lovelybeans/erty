@@ -8,6 +8,7 @@ class MyBot(commands.Bot):
     def __init__(self):
         intent = discord.Intents.default()
         intent.message_content = True
+        intent.members = True
         super().__init__(command_prefix="~", intents=intent)
 
     async def setup_hook(self) -> None:
