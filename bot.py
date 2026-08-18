@@ -30,7 +30,7 @@ async def on_message(msg: discord.Message):
 
 @client.event
 async def on_member_join(member: discord.Member):
-    chan = await member.guild.get_channel(1538358140016271400)
+    chan = member.guild.get_channel(1538358140016271400)
     await chan.send(f'Uhhh... Welcome {member.mention}... I guess.')
 
 client.run(os.getenv('BOT_TOKENL'))
