@@ -2,3 +2,4 @@ discord.py
 uvicorn
 fastapi
 requests
+python-dotenv
