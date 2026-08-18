@@ -1,13 +1,14 @@
 import uvicorn
 from fastapi import FastAPI, Header
 from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
 import json
 import requests
 import os
 import base64
 
 client_id = '1525114197917040731'
-client_sec = 'f1F3OEMctAnUuD5UJMDp_5UhjBNvIsYp'
+client_sec = os.getenv('CLIENT_SEC1')
 red_uri = 'https://lovelybeans.github.io/asdf/'
 app = FastAPI()
 

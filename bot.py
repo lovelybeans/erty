@@ -1,5 +1,7 @@
+import os
 import discord
 from discord.ext import commands
+from dotenv import load_dotenv
 
 # Set up intents (Message content intent is required for prefix commands)
 class MyBot(commands.Bot):
@@ -26,5 +28,4 @@ async def on_message(msg: discord.Message):
     if 'lurla' in msg.content.lower() or 'leela' in msg.content.lower():
         await msg.reply("UGH! It is not that! It is Lola! I mean- Lila! Cerise! ...Iris!\n*Gasps, putting a hand to her forehead*\nOh no, my rare, stress-induced aphasia is acting up again because you're bullying me! You're being so mean! I'm telling Mr. Damocles!")
 
-client.run('MTUzODM1NjY3OTY0Nzk2MTA4OA.G1V3Gc.q2cd8CG--Jb1of33UQIov_CETcsx_TipwnDVpw')
-#a
+client.run(os.getenv('BOT_TOKENL'))
