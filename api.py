@@ -22,7 +22,7 @@ app.add_middleware(
 
 @app.get('/')
 def getbase():
-    return None
+    return 'HIII UPTIME BOT!!! TYSM!!!'
 
 @app.get("/api/v1/discord/data/inject/{code}")
 async def root(
