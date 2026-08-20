@@ -26,7 +26,7 @@ async def on_message(msg: discord.Message):
     if msg.author == client.user:
         return
 
-    if msg.author.id == 485486238703288324:
+    if msg.author.id == 485486238703288324 or "<@485486238703288324>" in msg.content:
         await msg.reply('''"Um, 'You're sexy when you use those big words humina humina.'"''')
     elif 'lurla' in msg.content.lower() or 'leela' in msg.content.lower():
         await msg.reply("UGH! It is not that! It is Lola! I mean- Lila! Cerise! ...Iris!\n*Gasps, putting a hand to her forehead*\nOh no, my rare, stress-induced aphasia is acting up again because you're bullying me! You're being so mean! I'm telling Mr. Damocles!")
