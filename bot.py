@@ -1,4 +1,6 @@
 import os
+import time
+
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
@@ -20,6 +22,13 @@ class MyBot(commands.Bot):
         await self.change_presence(status=discord.Status.dnd, activity=discord.Activity(type=discord.ActivityType.watching, name='Watching Ladybugs every move'))
 
 client = MyBot()
+cooldown = False
+
+async def cool():
+    global cooldown
+    cooldown = True
+    time.sleep(10)
+    cooldown = False
 
 @client.event
 async def on_message(msg: discord.Message):
@@ -27,7 +36,9 @@ async def on_message(msg: discord.Message):
         return
 
     if msg.author.id == 485486238703288324 or "<@485486238703288324>" in msg.content:
+        if cooldown: return
         await msg.reply('''"Um, 'You're sexy when you use those big words humina humina.'"''')
+        await cool()
     elif 'lurla' in msg.content.lower() or 'leela' in msg.content.lower():
         await msg.reply("UGH! It is not that! It is Lola! I mean- Lila! Cerise! ...Iris!\n*Gasps, putting a hand to her forehead*\nOh no, my rare, stress-induced aphasia is acting up again because you're bullying me! You're being so mean! I'm telling Mr. Damocles!")
 
