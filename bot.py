@@ -1,3 +1,4 @@
+import asyncio
 import os
 import time
 
@@ -27,7 +28,7 @@ cooldown = False
 async def cool():
     global cooldown
     cooldown = True
-    time.sleep(10)
+    await asyncio.sleep(600)
     cooldown = False
 
 @client.event
